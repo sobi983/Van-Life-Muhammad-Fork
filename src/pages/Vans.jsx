@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import '../server'
 
 export default function Vans() {
   const [vans, setVans] = useState([]);
 
-  useEffect(() => {
-    fetch("/api/vans")
-      .then((res) => res.json())
-      .then((data) => setVans(data.vans));
-  }, []);
+  useEffect(()=>{
+    fetch('/api/vans')
+    .then(res=>res.json())
+    .then(data=> setVans(data.vans))
+  }, [])
+  console.log(vans)
 
   const vanElements = vans.map((van) => (
     <article key={van.id} className="van-title">
